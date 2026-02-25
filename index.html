@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Security Analyzer</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #strength-bar {
+            width: 100%;
+            height: 15px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        #strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        ul {
+            text-align: left;
+        }
+
+        .small {
+            font-size: 14px;
+            color: gray;
+        }
+
+        button {
+            margin-top: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Password Security Analyzer</h2>
+
+    <input type="password" id="password" placeholder="Enter Password" oninput="checkPassword()">
+    <br>
+    <button onclick="togglePassword()">Show / Hide</button>
+
+    <div id="strength-bar">
+        <div id="strength-fill"></div>
+    </div>
+
+    <p><strong>Score:</strong> <span id="score"></span></p>
+    <p><strong>Strength:</strong> <span id="strength"></span></p>
+    <p><strong>Entropy:</strong> <span id="entropy"></span> bits</p>
+    <p><strong>Crack Time:</strong> <span id="crackTime"></span></p>
+
+    <div>
+        <strong>Suggestions:</strong>
+        <ul id="suggestions"></ul>
+    </div>
+
+    <p class="small">
+        Strong passwords reduce vulnerability to brute-force and dictionary attacks.
+    </p>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
